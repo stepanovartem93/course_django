@@ -22,16 +22,20 @@
     </fieldset>
 
     <div>
-        {% for location in locations  %}
-            <div class="adress_in_contacts">
-                <h2> {{ location.city }} </h2>
-                <p>
-                    <strong>Телефон: </strong> {{ location.phone}}<br>
-                    <strong>Адрес: </strong> {{ location.adress}}<br>
-                    <strong>Email: </strong> {{ location.email}}
-                </p>
-            </div>
-        {% endfor %}
+        {% if locations %}
+            {% for location in locations  %}
+                <div class="adress_in_contacts">
+                    <h2> {{ location.city }} </h2>
+                    <p>
+                        <strong>Телефон: </strong> {{ location.phone}}<br>
+                        <strong>Адрес: </strong> {{ location.adress}}<br>
+                        <strong>Email: </strong> {{ location.email}}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+                <h3>Данные подгружаются...</h3>
+        {% endif %}    
     </div>
 
 {% endblock %}

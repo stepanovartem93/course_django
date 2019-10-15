@@ -1,7 +1,17 @@
 {% load static %}
 
 <ul class="mainMenu">
-    <li><a href="/">Главная</a></li>
-    <li><a href="/products">Каталог</a></li>
-    <li><a href="/contacts">Контакты</a></li>
+    <li>
+        <a href="{% url 'index' %}">
+            Главная
+        </a>
+    </li>
+    <li><a href="{% url 'products' %}">
+        Каталог
+        </a>
+    </li>
+    <li><a href="{% url 'contacts' %}">
+        Контакты
+        </a>
+    </li>
 </ul>
