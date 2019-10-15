@@ -3,10 +3,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        
-        {% block title%}
-            <title>Главная</title>
-        {%endblock%}
+        <title>{{ page_title}}</title>
+
 
         {% block css %}
             <link rel="stylesheet" href="{% static 'css/style.css' %}">
