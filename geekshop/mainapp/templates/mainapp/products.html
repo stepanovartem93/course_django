@@ -1,69 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Товар 1</title>
-        <link rel="stylesheet" href="/static/css/style.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <img src="/static/img/surf-logo.svg" alt="surf logo">
-                <div class="storeName">
-                    My shop
-                </div>
-                <ul class="mainMenu">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/products">Каталог</a></li>
-                    <li><a href="/contacts">Контакты</a></li>
-                </ul>
-            </div>
+{% extends 'mainapp/base.html' %}
 
-            <hr>
+{% block container %}
+    <h1>Доска для серфинга QUADKUMBER</h1>
 
-            <h1>Доска для серфинга QUADKUMBER</h1>
-
-            <div class="productImgAndDesc">
-                <a class="productImgWrap" href="/static/img/surfboard.jpg" target="_blank">
-                    <img class="productImg" src="/static/img/surfboard.jpg" alt="surfboard">
-                </a>
-                <div class="productShortDescWrap">
-                    <h2 class="productHeader">Описание товара:</h2>
-                    <p class="productShortDescription">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis earum eos eum
-                        exercitationem natus nemo officiis, rerum soluta voluptatibus! Architecto commodi dicta
-                        ea excepturi obcaecati placeat quos, sunt tenetur voluptas?
-                    </p>
-                    <a href="#" class="productBuyBtn">Купить</a>
-                </div>
-            </div>
-
-            <p>
-                <strong>BEST FOR:</strong> Getting into waves and maintaining speed;
-                without sacrificing the ability to hit the lip.
-                This board really flows off the tail.
+    <div class="productImgAndDesc">
+        <a class="productImgWrap" href="/static/img/surfboard.jpg" target="_blank">
+            <img class="productImg" src="/static/img/surfboard.jpg" alt="surfboard">
+        </a>
+        <div class="productShortDescWrap">
+            <h2 class="productHeader">Описание товара:</h2>
+            <p class="productShortDescription">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis earum eos eum
+                exercitationem natus nemo officiis, rerum soluta voluptatibus! Architecto commodi dicta
+                ea excepturi obcaecati placeat quos, sunt tenetur voluptas?
             </p>
-            <p>
-                <strong>FIN:</strong> Future boxes or glass on wooden fins,
-                by Gully, are standard on the Quadkumber.
-            </p>
-
-            <h2 class="productHeader">Характеристики товара:</h2>
-            <p>
-                <strong>RECOMMENDED BETWEEN:</strong> 5’2 and 6’2 long
-                <br>
-            </p>
-
-            <h2 class="productHeader">Подробное описание товара:</h2>
-            <p class="productFullDescription">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorum earum
-                excepturi hic iure necessitatibus nostrum numquam officia quaerat quisquam? Cupiditate
-                dolores excepturi hic ipsum nulla rem saepe. Consequatur, dolor, sequi? Dolor error
-                excepturi illum necessitatibus saepe! Iste, officia porro?
-            </p>
-
-            <hr>
-            <div class="footer">&copy; "Все права защищены"</div>
+            <a href="#" class="productBuyBtn">Купить</a>
         </div>
-    </body>
-</html>
+    </div>
+
+    <p>
+        <strong>BEST FOR:</strong> Getting into waves and maintaining speed;
+        without sacrificing the ability to hit the lip.
+        This board really flows off the tail.
+    </p>
+    <p>
+        <strong>FIN:</strong> Future boxes or glass on wooden fins,
+        by Gully, are standard on the Quadkumber.
+    </p>
+
+    <h2 class="productHeader">Характеристики товара:</h2>
+    <p>
+        <strong>RECOMMENDED BETWEEN:</strong> 5’2 and 6’2 long
+        <br>
+    </p>
+
+    <h2 class="productHeader">Подробное описание товара:</h2>
+    <p class="productFullDescription">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorum earum
+        excepturi hic iure necessitatibus nostrum numquam officia quaerat quisquam? Cupiditate
+        dolores excepturi hic ipsum nulla rem saepe. Consequatur, dolor, sequi? Dolor error
+        excepturi illum necessitatibus saepe! Iste, officia porro?
+    </p>
+{% endblock %}

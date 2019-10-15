@@ -176,6 +176,11 @@ body {
     color: #fff;
 }
 
+.adress_in_contacts {
+    float: left;
+    margin-right: 4%;
+}
+
 .productImg {
     width: 100%;
     border: 4px solid #274e7d;
