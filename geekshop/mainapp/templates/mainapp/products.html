@@ -1,11 +1,12 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
 {% block container %}
     <h1>Доска для серфинга QUADKUMBER</h1>
 
     <div class="productImgAndDesc">
-        <a class="productImgWrap" href="/static/img/surfboard.jpg" target="_blank">
-            <img class="productImg" src="/static/img/surfboard.jpg" alt="surfboard">
+        <a class="productImgWrap" href="{% static 'img/surfboard.jpg' %}" target="_blank">
+            <img class="productImg" src="{% static 'img/surfboard.jpg' %}" alt="surfboard">
         </a>
         <div class="productShortDescWrap">
             <h2 class="productHeader">Описание товара:</h2>
