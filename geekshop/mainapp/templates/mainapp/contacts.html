@@ -21,30 +21,17 @@
         </form>
     </fieldset>
 
-    <div class="adress_in_contacts">
-        <h2>Адрес </h2>
-        <p>
-            <strong>Телефон: </strong> +7 987 654 32 10<br>
-            <strong>Адрес: </strong> г. Москва, ул. Ленина, д. 2<br>
-            <strong>Email: </strong> contact.msk@myshop.ru
-        </p>
-    </div>
-    <div class="adress_in_contacts">
-        <h2>Адрес</h2>
-        <p>
-            <strong>Телефон: </strong> +7 987 654 32 10<br>
-            <strong>Адрес: </strong> г. Санкт-Петербург, ул. Денисов, д. 3<br>
-            <strong>Email: </strong> contact.spb@myshop.ru
-        </p>
-    </div>
-    <div class="adress_in_contacts">
-        <h2>Адрес</h2>
-        <p>
-            <strong>Телефон: </strong> +7 987 654 32 10<br>
-            <strong>Адрес: </strong> г. Екатеринбург, ул. Большая Петровка, д. 27<br>
-            <strong>Email: </strong> contact.ekb@myshop.ru
-        </p>
+    <div>
+        {% for location in locations  %}
+            <div class="adress_in_contacts">
+                <h2> {{ location.city }} </h2>
+                <p>
+                    <strong>Телефон: </strong> {{ location.phone}}<br>
+                    <strong>Адрес: </strong> {{ location.adress}}<br>
+                    <strong>Email: </strong> {{ location.email}}
+                </p>
+            </div>
+        {% endfor %}
     </div>
 
-    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afa06657c19968d4d9f3fcfeb461b84cd31c41bd08e4de230a4d676ef18a4f29c&amp;width=100%25&amp;height=374&amp;lang=ru_RU&amp;scroll=true"></script>
 {% endblock %}
