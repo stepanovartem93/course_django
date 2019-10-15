@@ -44,7 +44,7 @@ body {
 
 .mainMenu li a:hover {
     color: #274e7d;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .productHeader {
