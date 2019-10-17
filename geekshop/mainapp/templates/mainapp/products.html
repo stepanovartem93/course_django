@@ -36,7 +36,6 @@
         <strong>RECOMMENDED BETWEEN:</strong> 5’2 and 6’2 long
         <br>
     </p>
-
     <h2 class="productHeader">Подробное описание товара:</h2>
     <p class="productFullDescription">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorum earum
@@ -44,5 +43,21 @@
         dolores excepturi hic ipsum nulla rem saepe. Consequatur, dolor, sequi? Dolor error
         excepturi illum necessitatibus saepe! Iste, officia porro?
     </p>
+    <hr>
+    <h1>Похожие товары</h1>
+    <div class="block_contacts">
+        {% for product in products %}
+        <div class="adress_in_contacts">
+            <div>
+                <a href="#">
+                    <img class="similar_products" src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+                        <h3>{{ product.category.name }}</h3>
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.description }}</p>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     
 {% endblock %}
