@@ -177,8 +177,11 @@ body {
 }
 
 .adress_in_contacts {
+    background: rgba(106, 197, 147, 0.199);
+    text-align: center;
+    border: 1px solid black;
     float: left;
-    margin-right: 4%;
+    margin: 1%;
 }
 
 .block_contacts {
