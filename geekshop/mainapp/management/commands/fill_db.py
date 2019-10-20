@@ -6,7 +6,7 @@ from django.conf import settings
 import json, os
 
 def load_from_json(file_name):
-    with open(os.path.join(settings.JSON_PATH, file_name + '.json'), 'r' ) as infile:
+    with open(os.path.join(settings.JSON_PATH, f'{file_name}.json'), 'r', encoding='utf-8' ) as infile:
         return json.load(infile)
 
 class Command(BaseCommand):
@@ -18,17 +18,17 @@ class Command(BaseCommand):
             new_category = ProductCategory(**category)
             new_category.save()
 
-            products = load_from_json('products')
+        products = load_from_json('products')
 
-            Product.objects.all().delete()
-            for product in products:
-                category_name = product["category"]
-                #Получаем категорию по имени
-                _category = ProductCategory.objects.get(name=category_name)
-                #Заменяем название категории объектом
-                product['category'] = _category
-                new_product = Product(**product)
-                new_product.save()
-            
-            #Создаём суперпользователя при помощи менеджера модели
-            super_user = User.objects.create_superuser('django', 'django@gekshop.local', 'geekbrains')
+        Product.objects.all().delete()
+        for product in products:
+            category_name = product["category"]
+            #Получаем категорию по имени
+            _category = ProductCategory.objects.get(name=category_name)
+            #Заменяем название категории объектом
+            product['category'] = _category
+            new_product = Product(**product)
+            new_product.save()
+        
+        #Создаём суперпользователя при помощи менеджера модели
+        super_user = User.objects.create_superuser('django', 'django@gekshop.local', 'geekbrains')
