@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand
 from mainapp.models import ProductCategory, Product
 from django.contrib.auth.models import User
 from django.conf import settings
+from authapp.models import ShopUser
 
 
 def load_from_json(file_name):
@@ -31,4 +32,4 @@ class Command(BaseCommand):
             new_product.save()
         
         #Создаём суперпользователя при помощи менеджера модели
-        super_user = User.objects.create_superuser('django', 'django@gekshop.local', 'geekbrains')
+        super_user = ShopUser.objects.create_superuser('django', 'django@gekshop.local', 'geekbrains', age=33)
