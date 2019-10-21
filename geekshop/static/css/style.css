@@ -201,6 +201,22 @@ body {
     width: 300px;
 }
 
+.description_in_similar_products {
+    background: rgba(106, 197, 147, 0.199);
+    text-align: center;
+    border: 1px solid black;
+    float: left;
+    margin: 1%;
+}
+
+.block_similar_products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .productImg:hover {
     border-color: transparent;
 }

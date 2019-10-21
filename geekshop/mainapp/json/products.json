@@ -1,0 +1,101 @@
+[
+    {
+        "category":"Шортборд",
+        "name": "shortboard_one",
+        "image": "products_images/shortboard (1).jpg",
+        "short_desc": "Шортборд первый",
+        "description": "Шортборд малый первый",
+        "price": "9999.0",
+        "quantity": "7"
+    },
+    {
+        "category":"Шортборд",
+        "name": "shortboard_two",
+        "image": "products_images/shortboard (2).jpg",
+        "short_desc": "Шортборд второй",
+        "description": "Шортборд малый второй",
+        "price": "10999.0",
+        "quantity": "13"
+    },
+    {
+        "category":"Шортборд",
+        "name": "shortboard_three",
+        "image": "products_images/shortboard (3).jpg",
+        "short_desc": "Шортборд третий",
+        "description": "Шортборд малый третий",
+        "price": "11999.0",
+        "quantity": "2"
+    },
+    {
+        "category":"Лонгборд",
+        "name": "longboard_one",
+        "image": "products_images/longboard (1).jpg",
+        "short_desc": "Лонгборд первый",
+        "description": "Лонгборд крупный первый",
+        "price": "15999.0",
+        "quantity": "23"
+    },
+    {
+        "category":"Лонгборд",
+        "name": "longboard_two",
+        "image": "products_images/longboard (2).jpg",
+        "short_desc": "Лонгборд второй",
+        "description": "Лонгборд крупный второй",
+        "price": "16999.0",
+        "quantity": "11"
+    },
+    {
+        "category":"Лонгборд",
+        "name": "longboard_three",
+        "image": "products_images/longboard (3).jpg",
+        "short_desc": "Лонгборд третий",
+        "description": "Лонгборд крупный третий",
+        "price": "17999.0",
+        "quantity": "18"
+    },
+    {
+        "category":"Фишборд",
+        "name": "fishboard_one",
+        "image": "products_images/fishboard (1).jpg",
+        "short_desc": "Фишборд первый",
+        "description": "Фишборд рыбный первый",
+        "price": "3999.0",
+        "quantity": "30"
+    },
+    {
+        "category":"Фишборд",
+        "name": "fishboard_two",
+        "image": "products_images/fishboard (2).jpg",
+        "short_desc": "Фишборд второй",
+        "description": "Фишборд рыбный второй",
+        "price": "2999.0",
+        "quantity": "43"
+    },
+    {
+        "category":"Фишборд",
+        "name": "gunboard_three",
+        "image": "products_images/fishboard (3).jpg",
+        "short_desc": "Фишборд третий",
+        "description": "Фишборд рыбный третий",
+        "price": "3999.0",
+        "quantity": "7"
+    },
+    {
+        "category":"Ганборд",
+        "name": "gunboard_one",
+        "image": "products_images/gunboard (2).jpg",
+        "short_desc": "Ганборд второй",
+        "description": "Ганборд острый второй",
+        "price": "25999.0",
+        "quantity": "3"
+    },
+    {
+        "category":"Ганборд",
+        "name": "gunboard_one",
+        "image": "products_images/gunboard (3).jpg",
+        "short_desc": "Ганборд третий",
+        "description": "Ганборд острый третий",
+        "price": "26999.0",
+        "quantity": "4"
+    }
+]
