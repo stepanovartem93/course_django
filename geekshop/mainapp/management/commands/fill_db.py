@@ -1,9 +1,9 @@
+import json, os
 from django.core.management.base import BaseCommand
 from mainapp.models import ProductCategory, Product
 from django.contrib.auth.models import User
 from django.conf import settings
 
-import json, os
 
 def load_from_json(file_name):
     with open(os.path.join(settings.JSON_PATH, f'{file_name}.json'), 'r', encoding='utf-8' ) as infile:
