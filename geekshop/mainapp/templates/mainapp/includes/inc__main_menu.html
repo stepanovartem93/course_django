@@ -14,4 +14,11 @@
         Контакты
         </a>
     </li>
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'auth:user_logout'%}">Выйти</a>
+        {% else %}
+            <a href="{% url 'auth:user_login'%}">Войти</a>
+        {% endif %}
+    </li>
 </ul>
