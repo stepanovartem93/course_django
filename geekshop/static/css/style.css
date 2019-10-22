@@ -198,15 +198,24 @@ body {
 }
 
 .similar_products {
-    width: 300px;
+    width: 250px;
+    height: 300px;
 }
 
 .description_in_similar_products {
     background: rgba(106, 197, 147, 0.199);
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     float: left;
     margin: 1%;
+}
+
+.description_in_similar_products:hover {
+    border: 1px solid black;
+}
+
+.description_in_similar_products:not(:nth-child(-n+3)) {
+    display: none;
 }
 
 .block_similar_products {

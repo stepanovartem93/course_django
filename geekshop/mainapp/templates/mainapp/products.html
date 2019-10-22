@@ -47,15 +47,14 @@
     <h1>Похожие товары</h1>
     <div class="block_similar_products">
         {% for product in products %}
-        <div class="description_in_similar_products">
-            <div>
+            <div class="description_in_similar_products">
+            <div class="block">
                 <a href="#">
                     <img class="similar_products" src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
-                        <h3>{{ product.category.name }}</h3>
                         <h4>{{ product.name }}</h4>
-                        <p>{{ product.description }}</p>
+                        <p>{{ product.short_desc }}</p>
                 </a>
-            </div>
+            </div>   
         </div>
         {% endfor %}
     </div>
