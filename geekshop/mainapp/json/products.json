@@ -73,7 +73,7 @@
     },
     {
         "category":"Фишборд",
-        "name": "gunboard_three",
+        "name": "fishboard_three",
         "image": "products_images/fishboard (3).jpg",
         "short_desc": "Фишборд третий",
         "description": "Фишборд рыбный третий",
@@ -83,6 +83,15 @@
     {
         "category":"Ганборд",
         "name": "gunboard_one",
+        "image": "products_images/gunboard (1).jpg",
+        "short_desc": "Ганборд первый",
+        "description": "Ганборд острый первый",
+        "price": "25999.0",
+        "quantity": "3"
+    },
+    {
+        "category":"Ганборд",
+        "name": "gunboard_two",
         "image": "products_images/gunboard (2).jpg",
         "short_desc": "Ганборд второй",
         "description": "Ганборд острый второй",
@@ -91,7 +100,7 @@
     },
     {
         "category":"Ганборд",
-        "name": "gunboard_one",
+        "name": "gunboard_three",
         "image": "products_images/gunboard (3).jpg",
         "short_desc": "Ганборд третий",
         "description": "Ганборд острый третий",
