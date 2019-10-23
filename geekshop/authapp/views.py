@@ -4,8 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 
-from authapp.forms import ShopUserLoginForm
-from authapp.forms import ShopUserRegisterForm
+from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserUpdateForm
 
 
 def user_login(request):
@@ -53,4 +52,18 @@ def user_register(request):
     return render(request, 'authapp/register.html', content)
 
 def user_update(request):
-    return HttpResponseRedirect(reverse('main:index'))
+    title = 'редактирование данных'
+
+    if request.method == 'POST':
+        form = ShopUserUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('auth:user_update'))
+    else:
+        form = ShopUserUpdateForm(instance=request.user)
+
+    context = {
+        'title': 'редактирование пользователя',
+        'form': form,
+    }
+    return render(request, 'authapp/update.html', context)
