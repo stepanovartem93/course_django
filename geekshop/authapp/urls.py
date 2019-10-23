@@ -23,4 +23,6 @@ app_name = 'authapp'
 urlpatterns = [
     re_path(r'^login/$', authapp.user_login, name='user_login'),
     re_path(r'^logout/$', authapp.user_logout, name='user_logout'),
+    re_path(r'^register/$', authapp.user_register, name='user_register'),
+    re_path(r'^update/$', authapp.user_update, name='user_update'),
 ]
