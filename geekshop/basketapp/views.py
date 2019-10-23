@@ -14,6 +14,7 @@ def basket_add(request, pk):
     if not Basket.objects.filter(user=request.user, product=product).exists():
     
         Basket.objects.create(user=request.user, product=product, quantity=1)
+
     else:
     
         obj = Basket.objects.filter(user=request.user, product=product).first()

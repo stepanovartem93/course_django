@@ -49,7 +49,7 @@
         {% for product in products %}
             <div class="description_in_similar_products">
             <div class="block">
-                <a href="#">
+                <a href="{% url 'basket:basket_add' product.pk %}">
                     <img class="similar_products" src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
                         <h4>{{ product.name }}</h4>
                         <p>{{ product.short_desc }}</p>

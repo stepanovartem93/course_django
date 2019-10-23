@@ -214,9 +214,9 @@ body {
     border: 1px solid black;
 }
 
-.description_in_similar_products:not(:nth-child(-n+3)) {
+/* .description_in_similar_products:not(:nth-child(-n+3)) {
     display: none;
-}
+} */
 
 .block_similar_products {
     display: flex;
