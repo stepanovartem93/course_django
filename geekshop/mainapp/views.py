@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from mainapp.models import ProductCategory, Product
 
+def get_basket(request):
+    if request.user.is_authenticated:
+        return request.user.basket_set.all()
+    return []
+
 def index(request):
     context = {
         'page_title':'магазин',
+        'basket': get_basket(request),
     }
     return render(request, 'mainapp/index.html', context)
+
 
 def contacts(request):
     locations = [
@@ -31,8 +38,10 @@ def contacts(request):
     context = {
         'page_title':'контакты',
         'locations':locations,
+        'basket': get_basket(request),
     }
     return render(request, 'mainapp/contacts.html', context)
+
 
 def products(request):
     categories = ProductCategory.objects.all()
@@ -41,5 +50,6 @@ def products(request):
         'page_title': 'каталог',
         'categories_menu': categories,
         'products': products,
+        'basket':get_basket(request),
     }
     return render(request, 'mainapp/products.html', context)
