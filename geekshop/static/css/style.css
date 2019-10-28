@@ -108,7 +108,6 @@ body {
 }
 
 .productBuyBtn {
-    float: right;
     padding: 15px 25px;
     text-decoration: none;
     border-radius: 4px;
@@ -149,8 +148,6 @@ body {
     font-weight: 400;
     line-height: 24px;
 }
-
-
 
 .productShortDescription:first-letter,
 .productFullDescription:first-letter {
@@ -289,4 +286,11 @@ body {
     color: #274e7d;
     font-style: bold;
     text-decoration: none;
+}
+
+.hot_product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
