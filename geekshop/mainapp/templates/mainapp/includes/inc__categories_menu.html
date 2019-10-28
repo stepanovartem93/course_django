@@ -1,6 +1,12 @@
 <ul class="menu_catalog">
+    <li>
+        <a href="{% url 'main:categories' 0 %}">
+            ВСЕ
+        </a>
+    </li>
     {% for el in categories_menu %}
-    <li><a href="#">
+    <li>
+        <a href="{% url 'main:categories' el.pk %}">
             {{ el.name|title }}
         </a>
     </li>

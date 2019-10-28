@@ -70,7 +70,7 @@ def products(request):
     return render(request, 'mainapp/products.html', context)
 
 
-def categories(request):
+def categories(request, pk):
     products = Product.objects.all()
     context = {
         'page_title': 'каталог',

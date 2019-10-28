@@ -21,6 +21,7 @@ app_name =  'mainapp'
 urlpatterns = [
     re_path(r'^$', mainapp.index, name='index'),
     re_path(r'^contacts/$', mainapp.contacts, name='contacts'),
+    re_path(r'^category/(?P<pk>\d+)/$', mainapp.categories, name='categories'),
     re_path(r'^products/$', mainapp.products, name='products'),
 ]
 
