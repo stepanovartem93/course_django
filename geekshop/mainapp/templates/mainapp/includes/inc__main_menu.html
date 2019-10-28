@@ -29,11 +29,10 @@
         {% endif %}
     </li>
     
-    <a href="#" class="basket"></a>
+    <a href="{% url 'basket:index' %}" class="basket"></a>
         {% if basket %}
             <span>
-             {{ basket.0.total_price|floatformat:0 }} руб
-             ({{ basket.0.total_quantity }}шт)
+             {{ basket.0.total_price|floatformat:0 }} руб ({{ basket.0.total_quantity }} шт)
             </span>
         {% endif %}
 </ul>
