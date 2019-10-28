@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+    {% include 'mainapp/includes/inc__categories_menu.html' %}
+    <div class="hot_product">
+        <img class="similar_products" src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+        <h3>{{ product.name }}</h3>
+        <p >{{ product.price }}<span>руб</span></p>
+        <a href="{% url 'basket:basket_add' product.pk %}" class="productBuyBtn">
+            заказать </i>
+        </a>
+        <div>
+            <p>{{ product.short_description }}</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from mainapp.models import ProductCategory, Product
 
 def get_basket(request):
@@ -70,12 +70,30 @@ def products(request):
     return render(request, 'mainapp/products.html', context)
 
 
-def categories(request, pk):
-    products = Product.objects.all()
+def product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
     context = {
         'page_title': 'каталог',
-        'categories_menu': categories,
-        'products': products,
-        'basket':get_basket(request),
+        'categories_menu': get_categories_menu(),
+        'product': product,
+        'basket': get_basket(request),
     }
-    return render(request, 'mainapp/products.html', context)
+    return render(request, 'mainapp/product.html', context)
+
+
+def categories(request, pk):
+    pk = int(pk)
+    if pk == 0:
+        category = {'pk': 0, 'name': 'все'}
+        products = Product.objects.all()
+    else:
+        category = get_object_or_404(ProductCategory, pk=pk)
+        products = category.product_set.all()
+    context = { 
+        'page_title': 'каталог',
+        'categories_menu': get_categories_menu(),
+        'category': category,
+        'products': products,
+        'basket': get_basket(request),
+    }
+    return render(request, 'mainapp/category_products.html', context)
