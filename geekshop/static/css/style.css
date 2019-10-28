@@ -47,6 +47,24 @@ body {
     text-decoration: none;
 }
 
+.basket {
+    display: block;
+    width: 23px;
+    height: 23px;
+    background-image: url(/static/img/basket.png);
+    position: absolute;
+    top: 40px;
+    left: 930px;
+    text-decoration: none;
+    color: #555;
+}
+
+.basket span {
+	display: block;
+    margin-left: 30px;
+    width: 150px;
+}
+
 .productHeader {
     color: #000;
     font-size: 18px;

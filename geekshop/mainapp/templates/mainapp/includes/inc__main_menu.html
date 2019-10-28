@@ -28,4 +28,9 @@
             <a href="{% url 'auth:user_login'%}">Войти</a>
         {% endif %}
     </li>
+    
+    <a href="#" class="basket"></a>
+        {% if basket %}
+            <span>{{ basket|length }}</span>
+        {% endif %}
 </ul>
