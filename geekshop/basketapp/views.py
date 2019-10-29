@@ -8,6 +8,7 @@ from mainapp.models import Product
 from mainapp.views import get_basket
 
 
+@login_required
 def index(request):
     context = {
         'basket': get_basket(request),
@@ -15,21 +16,26 @@ def index(request):
     return render(request, 'basketapp/index.html', context)
 
 
+@login_required
 def basket_add(request, pk):
+    if LOGIN_URL in request.META['HTTP_REFERER']:
+            return HttpResponseRedirect(
+                reverse('main:product', kwargs={'pk': pk})
+            )
+
     product = get_object_or_404(Product, pk=pk)
 
     if not Basket.objects.filter(user=request.user, product=product).exists():
-    
         Basket.objects.create(user=request.user, product=product, quantity=1)
-
     else:
-    
         obj = Basket.objects.filter(user=request.user, product=product).first()
         obj.quantity += 1
         obj.save()
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
+
+@login_required
 def basket_delete(request, pk):
     get_object_or_404(Product, pk=pk).delete()
     # return HttpResponseRedirect(request.META['HTTP_REFERER'])

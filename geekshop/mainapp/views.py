@@ -58,7 +58,6 @@ def contacts(request):
 
 def products(request):
     hot_product = get_hot_product()
-    same_products = get_same_products(hot_product)
 
     context = {
         'page_title': 'каталог',
