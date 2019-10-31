@@ -22,4 +22,5 @@ urlpatterns = [
     re_path(r'^$', basketapp.index, name='index'),
     re_path(r'^product/add/(?P<pk>\d+)/$', basketapp.basket_add, name='basket_add'),
     re_path(r'^product/delete/(?P<pk>\d+)/$', basketapp.basket_delete, name='basket_delete'),
+    re_path(r'^update/(?P<pk>\d+)/(?P<quantity>\d+)/$', basketapp.basket_update),
 ]
