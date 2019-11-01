@@ -3,8 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm
-# , AdminProductCategoryUpdateForm
+from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm, AdminProductCategoryUpdateForm
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory
 
@@ -59,3 +58,47 @@ def user_delete(request, pk):
     user.save()
     # user.delete()
     return HttpResponseRedirect(reverse('myadmin:index'))
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def productcategories(request):
+    context = {
+        'title': 'категории продуктов',
+        'object_list': ProductCategory.objects.all()
+    }
+    return render(request, 'adminapp/productcategory_list.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def productcategory_create(request):
+    if request.method == 'POST':
+        form = AdminProductCategoryUpdateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:productcategories'))
+    else:
+        form = AdminProductCategoryUpdateForm()
+
+    context = {
+        'title': 'категории продуктов/создание',
+        'form': form
+    }
+    return render(request, 'adminapp/productcategory_update.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def productcategory_update(request, pk):
+    obj = get_object_or_404(ProductCategory, pk=pk)
+    if request.method == 'POST':
+        form = AdminProductCategoryUpdateForm(request.POST, request.FILES, instance=obj)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:productcategories'))
+    else:
+        form = AdminProductCategoryUpdateForm(instance=obj)
+
+    context = {
+        'title': 'категории продуктов/редактирование',
+        'form': form
+    }
+    return render(request, 'adminapp/productcategory_update.html', context)

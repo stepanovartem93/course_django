@@ -512,3 +512,64 @@ body {
     width: 300px;
     border-radius: 25px;
 }
+
+.new_category_form {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.categories_list {
+    margin-left: 150px;
+}
+
+.categories_list .new_category {
+    margin-left: 200px;
+}
+
+.categories_list button {
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    height: 30px;
+    margin: 5px auto;
+    padding: 0 15px;
+}
+
+.categories_list a {
+    color: #555;
+    text-decoration: none;
+}
+
+.category_record {
+    height: 125px;
+    margin: 15px auto;
+    position: relative;
+}
+
+.category_record.not_active {
+    opacity: 0.5;
+}
+
+.categories_list .category_name {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    margin-left: 25px;
+    width: 150px;
+    font-size: 150%;
+}
+
+.category_record .category_actions {
+    display: block;
+    float: left;
+    margin-top: 0px;
+    margin-left: 25px;
+    width: 175px;
+}
+
+.category_record .category_desc {
+    display: block;
+    float: left;
+    margin-top: 0px;
+    margin-left: 25px;
+    width: 300px;
+}

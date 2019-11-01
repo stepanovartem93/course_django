@@ -44,3 +44,14 @@ class AdminShopUserUpdateForm(UserChangeForm):
         if data < 18:
             raise forms.ValidationError("Вы слишком молоды!")
         return data
+
+
+class AdminProductCategoryUpdateForm(forms.ModelForm):
+    class Meta:
+        model = ProductCategory
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
