@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from adminapp.forms import AdminShopUserUpdateForm
-# , AdminShopUserCreateForm, AdminProductCategoryUpdateForm
+from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm
+# , AdminProductCategoryUpdateForm
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory
 
@@ -16,6 +16,23 @@ def index(request):
         'shop_users': ShopUser.objects.all().order_by('-is_active', '-is_superuser')
     }
     return render(request, 'adminapp/index.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def user_create(request):
+    if request.method == 'POST':
+        form = AdminShopUserCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:index'))
+    else:
+        form = AdminShopUserCreateForm()
+
+    context = {
+        'title': 'пользователи/создание',
+        'form': form
+    }
+    return render(request, 'adminapp/user_update.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
