@@ -13,7 +13,7 @@
                      alt="{{ shop_user.username }}">
                 <div class="user_role">
                     {% if shop_user.is_superuser %}администратор{% else %}пользователь{% endif %}
-                    <a href="{% url 'myadmin:user_delete' shop_user.pk %}" class="btn btn-primary">
+                    <a href="{% url 'myadmin:user_update' shop_user.pk %}" class="btn btn-primary">
                         редактировать
                     </a>
                     <a href="{% url 'myadmin:user_delete' shop_user.pk %}" class="btn btn-danger">
