@@ -12,11 +12,11 @@ def get_categories_menu():
 
 
 def get_hot_product():
-    return random.choice(Product.objects.all())
+    return random.choice(Product.objects.filter(is_active=True))
 
 
 def get_same_products(product):
-    return product.category.product_set.exclude(pk=product.pk)
+    return product.category.product_set.filter(is_active=True).exclude(pk=product.pk)
 
 
 def index(request):
@@ -84,10 +84,10 @@ def categories(request, pk):
     pk = int(pk)
     if pk == 0:
         category = {'pk': 0, 'name': 'все'}
-        products = Product.objects.all()
+        products = Product.objects.filter(is_active=True)
     else:
         category = get_object_or_404(ProductCategory, pk=pk)
-        products = category.product_set.all()
+        products = category.product_set.filter(is_active=True)
     context = { 
         'page_title': 'каталог',
         'categories_menu': get_categories_menu(),
