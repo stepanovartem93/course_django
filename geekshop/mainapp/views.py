@@ -8,7 +8,7 @@ def get_basket(request):
     return []
 
 def get_categories_menu():
-    return ProductCategory.objects.all()
+    return ProductCategory.objects.filter(is_active=True)
 
 
 def get_hot_product():

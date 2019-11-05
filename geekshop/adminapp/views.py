@@ -52,6 +52,7 @@ def user_update(request, pk):
     return render(request, 'adminapp/user_update.html', context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def user_delete(request, pk):
     user = get_object_or_404(ShopUser, pk=pk)
     user.is_active = False
@@ -102,3 +103,12 @@ def productcategory_update(request, pk):
         'form': form
     }
     return render(request, 'adminapp/productcategory_update.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def productcategory_delete(request, pk):
+    obj = get_object_or_404(ProductCategory, pk=pk)
+    obj.is_active = False
+    obj.save()
+    # user.delete()
+    return HttpResponseRedirect(reverse('myadmin:productcategories'))
