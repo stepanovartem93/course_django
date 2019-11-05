@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.urls import reverse
 
 from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm, AdminProductCategoryUpdateForm
@@ -112,3 +112,16 @@ def productcategory_delete(request, pk):
     obj.save()
     # user.delete()
     return HttpResponseRedirect(reverse('myadmin:productcategories'))
+
+@user_passes_test(lambda u: u.is_superuser)
+def products(request, pk):
+    category = get_object_or_404(ProductCategory, pk=pk)
+    objs = category.product_set.all()
+    # objs = get_list_or_404(Product, category=pk)
+    # category = objs[0].category
+    context = {
+        'title': f'продукты категории {category.name}',
+        'category': category,
+        'object_list': objs
+    }
+    return render(request, 'adminapp/products_list.html', context)
