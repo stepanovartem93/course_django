@@ -166,3 +166,20 @@ def product_update(request, pk):
         'category': product.category
     }
     return render(request, 'adminapp/product_update.html', context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def product_delete(request, pk):
+    obj = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'POST':
+        obj.is_active = False
+        obj.save()
+        return HttpResponseRedirect(reverse(
+            'myadmin:products', kwargs={'pk': obj.category.pk}
+        ))
+    else:
+        context = {
+            'title': 'продукты/удаление',
+            'obj': obj,
+        }
+        return render(request, 'adminapp/product_delete.html', context)
