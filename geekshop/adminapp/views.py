@@ -3,9 +3,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.urls import reverse
 
-from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm, AdminProductCategoryUpdateForm
+from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm, AdminProductCategoryUpdateForm, AdminProductUpdateForm
 from authapp.models import ShopUser
-from mainapp.models import ProductCategory
+from mainapp.models import ProductCategory, Product
 
 
 @user_passes_test(lambda x: x.is_superuser)
@@ -125,3 +125,44 @@ def products(request, pk):
         'object_list': objs
     }
     return render(request, 'adminapp/products_list.html', context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def product_create(request, pk):
+    category = get_object_or_404(ProductCategory, pk=pk)
+    if request.method == 'POST':
+        form = AdminProductUpdateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:products', kwargs={'pk': category.pk}))
+    else:
+        form = AdminProductUpdateForm(initial = {
+            'category': category,
+            # 'quantity': 10,
+            # 'price': 157.9,
+        })
+
+    context = {
+        'title': 'продукты/создание',
+        'form': form,
+        'category': category
+    }
+    return render(request, 'adminapp/product_update.html', context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def product_update(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = AdminProductUpdateForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse(
+                'myadmin:products', kwargs={'pk': product.category.pk}))
+    else:
+        form = AdminProductUpdateForm(instance=product)
+
+    context = {
+        'title': 'продукты/редактирование',
+        'form': form,
+        'category': product.category
+    }
+    return render(request, 'adminapp/product_update.html', context)

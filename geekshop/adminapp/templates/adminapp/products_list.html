@@ -5,7 +5,7 @@
 {% block container %}
     <div class="products_list">
         <a class="new_product btn btn-default"
-           {% comment %} href={% url 'myadmin:product_create' category.pk %}>новый продукт</a> {% endcomment %}
+           href={% url 'myadmin:product_create' category.pk %}>новый продукт</a>
 		
 		{% for object in object_list %}
 			<div class="product_record {% if not object.is_active %}not_active{% endif %}">
@@ -18,7 +18,7 @@
 						{% comment %} <a href={% url 'myadmin:product_read' object.pk %}>подробнее</a> {% endcomment %}
 					</button>
 					<button>
-						{% comment %} <a href={% url 'myadmin:product_update' object.pk %}>редактировать</a> {% endcomment %}
+						<a href={% url 'myadmin:product_update' object.pk %}>редактировать</a>
 					</button>
 					<button>
 						{% comment %} <a href={% url 'myadmin:product_delete' object.pk %}>удалить</a> {% endcomment %}

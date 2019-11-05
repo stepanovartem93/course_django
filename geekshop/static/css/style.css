@@ -576,7 +576,7 @@ body {
 
 /* product_list */
 
-/* .products_list {
+.products_list {
     margin-left: 250px;
 }
 
@@ -655,4 +655,9 @@ body {
     margin-left: 35px;
     margin-top: 45px;
     width: 400px;
-} */
+}
+
+.new_category_form {
+    margin: 0 auto;
+    width: 600px;
+}
