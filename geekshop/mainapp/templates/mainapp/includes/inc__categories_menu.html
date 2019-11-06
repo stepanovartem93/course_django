@@ -1,12 +1,13 @@
 <ul class="menu_catalog">
     <li>
-        <a href="{% url 'main:categories' 0 %}">
+        <a href="{% url 'main:category_all' 1 %}"
+            class="active">
             ВСЕ
         </a>
     </li>
     {% for el in categories_menu %}
     <li>
-        <a href="{% url 'main:categories' el.pk %}">
+        <a href="{% url 'main:categories' el.pk 1%}">
             {{ el.name|title }}
         </a>
     </li>
