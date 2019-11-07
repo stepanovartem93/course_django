@@ -15,7 +15,7 @@
 				</div>
 				<div class="product_actions">
 					<button>
-						{% comment %} <a href={% url 'myadmin:product_read' object.pk %}>подробнее</a> {% endcomment %}
+						<a href={% url 'myadmin:product_read' object.pk %}>подробнее</a>
 					</button>
 					<button>
 						<a href={% url 'myadmin:product_update' object.pk %}>редактировать</a>
