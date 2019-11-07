@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from django.urls import reverse
-from django.views.generic import ListView
+from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, CreateView, UpdateView
 
 from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm, AdminProductCategoryUpdateForm, AdminProductUpdateForm
 from authapp.models import ShopUser
@@ -20,6 +21,10 @@ from mainapp.models import ProductCategory, Product
 
 class ShopUserList(ListView):
     model = ShopUser
+
+    @method_decorator(user_passes_test(lambda x: x.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -75,40 +80,57 @@ def productcategories(request):
     return render(request, 'adminapp/productcategory_list.html', context)
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def productcategory_create(request):
-    if request.method == 'POST':
-        form = AdminProductCategoryUpdateForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('myadmin:productcategories'))
-    else:
-        form = AdminProductCategoryUpdateForm()
+# @user_passes_test(lambda u: u.is_superuser)
+# def productcategory_create(request):
+#     if request.method == 'POST':
+#         form = AdminProductCategoryUpdateForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect(reverse('myadmin:productcategories'))
+#     else:
+#         form = AdminProductCategoryUpdateForm()
 
-    context = {
-        'title': 'категории продуктов/создание',
-        'form': form
-    }
-    return render(request, 'adminapp/productcategory_update.html', context)
+#     context = {
+#         'title': 'категории продуктов/создание',
+#         'form': form
+#     }
+#     return render(request, 'adminapp/productcategory_update.html', context)
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def productcategory_update(request, pk):
-    obj = get_object_or_404(ProductCategory, pk=pk)
-    if request.method == 'POST':
-        form = AdminProductCategoryUpdateForm(request.POST, request.FILES, instance=obj)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('myadmin:productcategories'))
-    else:
-        form = AdminProductCategoryUpdateForm(instance=obj)
+class ProductCategoryCreateView(CreateView):
+    model = ProductCategory
+    success_url = reverse_lazy('myadmin:productcategory')
+    form_class = AdminProductCategoryUpdateForm
 
-    context = {
-        'title': 'категории продуктов/редактирование',
-        'form': form
-    }
-    return render(request, 'adminapp/productcategory_update.html', context)
 
+# @user_passes_test(lambda u: u.is_superuser)
+# def productcategory_update(request, pk):
+#     obj = get_object_or_404(ProductCategory, pk=pk)
+#     if request.method == 'POST':
+#         form = AdminProductCategoryUpdateForm(request.POST, request.FILES, instance=obj)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect(reverse('myadmin:productcategories'))
+#     else:
+#         form = AdminProductCategoryUpdateForm(instance=obj)
+
+#     context = {
+#         'title': 'категории продуктов/редактирование',
+#         'form': form
+#     }
+#     return render(request, 'adminapp/productcategory_update.html', context)
+
+
+class ProductCategoryUpdateView(UpdateView):
+    model = ProductCategory
+    success_url = reverse_lazy('myadmin:productcategories')
+    # fields = '__all__'
+    form_class = AdminProductCategoryUpdateForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'категории\редактирование'
+        return context
 
 @user_passes_test(lambda u: u.is_superuser)
 def productcategory_delete(request, pk):
