@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from adminapp.forms import AdminShopUserUpdateForm, AdminShopUserCreateForm, AdminProductCategoryUpdateForm, AdminProductUpdateForm
 from authapp.models import ShopUser
@@ -132,13 +132,25 @@ class ProductCategoryUpdateView(UpdateView):
         context['title'] = 'категории\редактирование'
         return context
 
-@user_passes_test(lambda u: u.is_superuser)
-def productcategory_delete(request, pk):
-    obj = get_object_or_404(ProductCategory, pk=pk)
-    obj.is_active = False
-    obj.save()
-    # user.delete()
-    return HttpResponseRedirect(reverse('myadmin:productcategories'))
+# @user_passes_test(lambda u: u.is_superuser)
+# def productcategory_delete(request, pk):
+#     obj = get_object_or_404(ProductCategory, pk=pk)
+#     obj.is_active = False
+#     obj.save()
+#     # user.delete()
+#     return HttpResponseRedirect(reverse('myadmin:productcategories'))
+
+
+class ProductCategoryDelete(DeleteView):
+    model = ProductCategory
+    success_url = reverse_lazy('myadmin:productcategories')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def products(request, pk):

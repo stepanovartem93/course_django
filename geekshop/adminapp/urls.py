@@ -28,12 +28,16 @@ urlpatterns = [
     re_path(r'^productcategories/$', adminapp.productcategories, name='productcategories'),
     
     # re_path(r'^productcategory/create/$', adminapp.productcategory_create, name='productcategory_create'),
-    re_path(r'^productcategory/create/$', adminapp.ProductCategoryCreateView.as_view(), name='productcategory_create'),
+    re_path(r'^productcategory/create/$', adminapp.ProductCategoryCreateView.as_view(), 
+        name='productcategory_create'),
 
     # re_path(r'^productcategory/update/(?P<pk>\d+)/$', adminapp.productcategory_update, name='productcategory_update'),
-    re_path(r'^productcategory/update/(?P<pk>\d+)/$', adminapp.ProductCategoryUpdateView.as_view(), name='productcategory_update'),
+    re_path(r'^productcategory/update/(?P<pk>\d+)/$', adminapp.ProductCategoryUpdateView.as_view(), 
+        name='productcategory_update'),
 
-    re_path(r'^productcategory/delete/(?P<pk>\d+)/$', adminapp.productcategory_delete, name='productcategory_delete'),
+    # re_path(r'^productcategory/delete/(?P<pk>\d+)/$', adminapp.productcategory_delete, name='productcategory_delete'),
+    re_path(r'^productcategory/delete/(?P<pk>\d+)/$', adminapp.ProductCategoryDelete.as_view(), 
+        name='productcategory_delete'),
     
     re_path(r'^products/(?P<pk>\d+)/$', adminapp.products, name='products'),
     re_path(r'^products/create/(?P<pk>\d+)/$', adminapp.product_create, name='product_create'),
