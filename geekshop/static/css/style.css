@@ -226,7 +226,7 @@ body {
 }
 
 .description_in_similar_products:hover {
-    border: 1px solid black;
+    outline: 1px solid black;
 }
 
 /* .description_in_similar_products:not(:nth-child(-n+3)) {
